@@ -60,7 +60,7 @@ st.markdown("""
         .stButton>button { width: 100% !important; margin-top: 5px; }
     }
     </style>
-""", unsafe_allow_index=True)
+""", unsafe_allow_html=True)
 
 # --- CONNEXION LIVE AU GOOGLE SHEETS ---
 try:
@@ -100,8 +100,8 @@ with st.sidebar:
 # 🏠 ÉCRAN D'ACCUEIL
 # ==========================================
 if menu == "🏠 Accueil & Places":
-    st.markdown('<div class="marquee-container"><div class="marquee-text">📞 INSCRIPTION SUR SMARTPHONE OU PAR TÉLÉPHONE AU 06 36 37 18 93 — PAS DE PAIEMENT EN LIGNE — RÈGLEMENT SUR PLACE LE JOUR DU CONCOURS</div></div>', unsafe_allow_index=True)
-    st.markdown('<h1 class="main-title">A.S.B. TRAMOLÉ - Saison 2026</h1>', unsafe_allow_index=True)
+    st.markdown('<div class="marquee-container"><div class="marquee-text">📞 INSCRIPTION SUR SMARTPHONE OU PAR TÉLÉPHONE AU 06 36 37 18 93 — PAS DE PAIEMENT EN LIGNE — RÈGLEMENT SUR PLACE LE JOUR DU CONCOURS</div></div>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">A.S.B. TRAMOLÉ - Saison 2026</h1>', unsafe_allow_html=True)
     st.info("ℹ️ Règlement des concours : Les règlements se feront sur place le jour même du concours lors de la présentation des licences.")
     st.write("### 📅 Disponibilités en Temps Réel :")
 
@@ -120,7 +120,7 @@ if menu == "🏠 Accueil & Places":
                     <h5 style="margin:0 0 5px 0; color:#003399;">{label}</h5>
                     <p style="margin:0; font-size:14px;"><b>Statut :</b> {"<span class='complet-txt'>❌ COMPLET</span>" if restantes<=0 else f"<span class='dispo-txt'>✅ {restantes} places libres sur {info['max']}</span>"}</p>
                 </div>
-                """, unsafe_allow_index=True)
+                """, unsafe_allow_html=True)
             with col2:
                 if restantes <= 0:
                     if st.button("Complet 🚫", key=f"home_comp_{info['sheet']}"):
@@ -136,7 +136,7 @@ if menu == "🏠 Accueil & Places":
 # 📝 FORMULAIRE D'INSCRIPTION
 # ==========================================
 elif menu == "📝 Formulaire d'Inscription":
-    st.markdown('<h2 class="main-title">Saisie de l\'Inscription</h2>', unsafe_allow_index=True)
+    st.markdown('<h2 class="main-title">Saisie de l\'Inscription</h2>', unsafe_allow_html=True)
     label_defaut = st.session_state.get("selected_sheet_label", list(ONGLETS_CONCOURS.keys())[0])
     choix = st.selectbox("Sélectionnez le concours :", list(ONGLETS_CONCOURS.keys()), index=list(ONGLETS_CONCOURS.keys()).index(label_defaut))
     info_target = ONGLETS_CONCOURS[choix]
@@ -194,7 +194,7 @@ elif menu == "📝 Formulaire d'Inscription":
 # 👥 LISTE DES INSCRITS (Verrouillée)
 # ==========================================
 elif menu == "👥 Liste des Inscrits":
-    st.markdown('<h2 class="main-title">Liste des Joueurs Engagés</h2>', unsafe_allow_index=True)
+    st.markdown('<h2 class="main-title">Liste des Joueurs Engagés</h2>', unsafe_allow_html=True)
     choix = st.selectbox("Sélectionnez le concours :", list(ONGLETS_CONCOURS.keys()))
     df_visu = conn.read(worksheet=ONGLETS_CONCOURS[choix]["sheet"])
     df_presents = df_visu.dropna(subset=['NOM'])
@@ -209,7 +209,7 @@ elif menu == "👥 Liste des Inscrits":
 # 🔐 ANNULATION ET COMPTE SÉCURISÉ
 # ==========================================
 elif menu == "🔐 Annuler une inscription":
-    st.markdown('<h2 class="main-title">Espace Désinscription Autonome</h2>', unsafe_allow_index=True)
+    st.markdown('<h2 class="main-title">Espace Désinscription Autonome</h2>', unsafe_allow_html=True)
     t_co, t_creer, t_action = st.tabs(["Connexion", "Créer un compte", "Mes Annulations"])
 
     with t_creer:
