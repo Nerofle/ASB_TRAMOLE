@@ -86,7 +86,7 @@ if "user_asbt" not in st.session_state:
 
 # --- MENU NAVIGATION ADAPTÉ MOBILE ---
 with st.sidebar:
-    st.image("LOGO_ASBT_SANS_FOND_BLANC.png", use_container_width=True)
+    st.markdown("### 🔮 A.S.B. TRAMOLÉ")
     st.markdown("---")
     menu = st.radio("Aller à :", ["🏠 Accueil & Places", "📝 Formulaire d'Inscription", "👥 Liste des Inscrits", "🔐 Annuler une inscription"])
     st.markdown("---")
@@ -208,7 +208,7 @@ elif menu == "👥 Liste des Inscrits":
 # ==========================================
 # 🔐 ANNULATION ET COMPTE SÉCURISÉ
 # ==========================================
-elif menu == "🔐 Annulation & Compte":
+elif menu == "🔐 Annuler une inscription":
     st.markdown('<h2 class="main-title">Espace Désinscription Autonome</h2>', unsafe_allow_index=True)
     t_co, t_creer, t_action = st.tabs(["Connexion", "Créer un compte", "Mes Annulations"])
 
